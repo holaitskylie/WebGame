@@ -159,10 +159,13 @@
         }
 
         function setGame() {
+            // 타일 생성
             for (let i = 0; i < 9; i++) {
                 const tile = document.createElement("div");
+                //tile의 id를 i의 스트링으로 넘김
                 tile.id = i.toString();
                 tile.addEventListener("click", selectTile);
+                //tile을 board에 추가
                 document.getElementById("board").appendChild(tile);
             }
 
@@ -171,6 +174,8 @@
         }
 
         function getRandomTile() {
+            //Math.random()*9 : 0 ~ 8 부동 소수점 숫사 생성
+            //Math.floor()로 정수로 만듬
             const num = Math.floor(Math.random() * 9);
             return num.toString();
         }
@@ -180,14 +185,20 @@
                 return;
             }
 
+            // 호박이 하나의 타일에만 나타나도록
+            //다른 타일의 호박은 제거
             if (currPumpkinTile) {
                 currPumpkinTile.innerHTML = "";
             }
             const pumpkin = document.createElement("img");
             pumpkin.src = "Assets/pumpkin.png";
 
-            const num = getRandomTile();
+            
+            //여우랑 같은 타일이면 return
             if (currFoxTile && currFoxTile.id == num) { return; }
+
+            //호박이 나타날 타일의 값을 받아온다
+            const num = getRandomTile();
             currPumpkinTile = document.getElementById(num);
             currPumpkinTile.appendChild(pumpkin);
         }
@@ -202,9 +213,9 @@
             }
             const fox = document.createElement("img");
             fox.src = "Assets/Fox2.png";
-
-            const num = getRandomTile();
+            
             if (currPumpkinTile && currPumpkinTile.id == num) { return; }
+            const num = getRandomTile();
             currFoxTile = document.getElementById(num);
             currFoxTile.appendChild(fox);
         }
