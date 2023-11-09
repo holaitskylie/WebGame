@@ -193,12 +193,12 @@
             const pumpkin = document.createElement("img");
             pumpkin.src = "Assets/pumpkin.png";
 
-            
+            //호박이 나타날 타일의 값을 받아온다
+            const num = getRandomTile();
             //여우랑 같은 타일이면 return
             if (currFoxTile && currFoxTile.id == num) { return; }
 
-            //호박이 나타날 타일의 값을 받아온다
-            const num = getRandomTile();
+            
             currPumpkinTile = document.getElementById(num);
             currPumpkinTile.appendChild(pumpkin);
         }
@@ -211,11 +211,12 @@
             if (currFoxTile) {
                 currFoxTile.innerHTML = "";
             }
-            const fox = document.createElement("img");
+            const fox = document.createElement("img");            
             fox.src = "Assets/Fox2.png";
             
-            if (currPumpkinTile && currPumpkinTile.id == num) { return; }
             const num = getRandomTile();
+            if (currPumpkinTile && currPumpkinTile.id == num) { return; }
+            
             currFoxTile = document.getElementById(num);
             currFoxTile.appendChild(fox);
         }
